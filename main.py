@@ -1,7 +1,6 @@
 import random
 
 class DeckOfCards:
-    __cards = []
    
     SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
     RANKS = [
@@ -21,22 +20,25 @@ class DeckOfCards:
     ]
 
     def __init__(self):
+        self.__cards = []
         self.create_deck()
 
     def create_deck(self):
         card_tuple = ()
         for suit in self.SUITS:
             for rank in self.RANKS:             #ranks are already sorted,  but supopse they weren't  
-                card_tuple += (rank, suit)
+                card_tuple = (rank, suit)
                 self.__cards.append(card_tuple)
-               
+        print(self.__cards[0])
+
     def shuffle_deck(self):
         random.shuffle(self.__cards)
+        print(len(self.__cards))
 
     def deal_card(self):
-        print()
-        self.__cards.pop(0)
-        print(self.__cards)
+        if len(self.__cards) == 0:
+            return None
+        return self.__cards.pop()
 
     # don't touch below this line
 
